@@ -13,7 +13,7 @@ public class GoldBankAccountTest {
     private final int littleWithdraw = 50;
     @BeforeEach
     void init(){
-        this.account = new GoldBankAccount();
+        this.account = new GoldBankAccount(new CoreBankAccount());
     }
 
     @Test

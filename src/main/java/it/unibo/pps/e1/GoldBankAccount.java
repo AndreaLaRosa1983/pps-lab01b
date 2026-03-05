@@ -6,8 +6,8 @@ package it.unibo.pps.e1;
         private final FeePolicy feePolicy;
         private final WithdrawPolicy withdrawPolicy;
 
-        public GoldBankAccount() {
-            this.base = new CoreBankAccount();
+        public GoldBankAccount(CoreBankAccount base) {
+            this.base = base;
             this.feePolicy = new FixedFeePolicy(0);
             this.withdrawPolicy = new OverdraftWithdrawPolicy(500);
         }

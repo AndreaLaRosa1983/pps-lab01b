@@ -15,7 +15,7 @@ public class SilverBankAccountTest {
     private final int fee = 1;
     @BeforeEach
     void init(){
-        this.account = new SilverBankAccount();
+        this.account = new SilverBankAccount(new CoreBankAccount());
     }
 
     @Test

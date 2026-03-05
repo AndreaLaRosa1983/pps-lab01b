@@ -6,8 +6,8 @@ public class SilverBankAccount implements BankAccount {
     private final FeePolicy feePolicy;
     private final WithdrawPolicy withdrawPolicy;
 
-    public SilverBankAccount() {
-        this.base = new CoreBankAccount();
+    public SilverBankAccount(CoreBankAccount base) {
+        this.base = base;
         this.feePolicy = new FixedFeePolicy(1);
         this.withdrawPolicy = new NoOverdraftWithdrawPolicy();
     }

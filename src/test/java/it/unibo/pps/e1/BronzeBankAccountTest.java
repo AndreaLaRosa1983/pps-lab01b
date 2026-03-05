@@ -14,7 +14,7 @@ public class BronzeBankAccountTest {
     private final int bronzeFee = 1;
     @BeforeEach
     void init(){
-        this.account = new BronzeBankAccount();
+        this.account = new BronzeBankAccount(new CoreBankAccount());
     }
 
     @Test
