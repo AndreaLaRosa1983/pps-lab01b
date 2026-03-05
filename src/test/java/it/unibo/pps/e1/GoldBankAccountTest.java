@@ -33,4 +33,10 @@ public class GoldBankAccountTest {
         assertEquals(950, this.account.getBalance());
     }
 
+    @Test
+    public void testCannotWithdrawMoreThanAvailable(){
+        this.account.deposit(1000);
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
+    }
+
 }
