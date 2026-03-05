@@ -1,19 +1,31 @@
 package it.unibo.pps.e1;
 
-public class SilverBankAccount implements BankAccount{
+public class SilverBankAccount implements BankAccount {
 
-    private CoreBankAccount base = new CoreBankAccount();
-    private int fee = 1;
+    private final CoreBankAccount base;
+    private final FeePolicy feePolicy;
+    private final WithdrawPolicy withdrawPolicy;
+
+    public SilverBankAccount() {
+        this.base = new CoreBankAccount();
+        this.feePolicy = new FixedFeePolicy(1);
+        this.withdrawPolicy = new NoOverdraftWithdrawPolicy();
+    }
+
+    @Override
     public int getBalance() {
         return base.getBalance();
     }
 
-    public void deposit(int amount) {
+    @Override
+    public void deposit(final int amount) {
         base.deposit(amount);
     }
 
-    public void withdraw(int amount) {
-        if (this.getBalance() < amount + fee){  //limit case + 1000 - 1000  -1 we go negative-
+    @Override
+    public void withdraw(final int amount) {
+        final int fee = feePolicy.fee(amount);
+        if (!withdrawPolicy.canWithdraw(getBalance(), amount, fee)) {
             throw new IllegalStateException();
         }
         base.withdraw(amount + fee);
