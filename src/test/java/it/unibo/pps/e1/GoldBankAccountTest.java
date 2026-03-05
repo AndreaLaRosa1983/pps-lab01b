@@ -19,4 +19,10 @@ public class GoldBankAccountTest {
     void testInitiallyEmpty() {
         assertEquals(0, this.account.getBalance());
     }
+
+    @Test
+    public void testCanDeposit() {
+        this.account.deposit(1000);
+        assertEquals(1000, this.account.getBalance());
+    }
 }

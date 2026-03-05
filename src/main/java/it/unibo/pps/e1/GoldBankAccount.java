@@ -6,7 +6,7 @@ public class GoldBankAccount implements BankAccount {
 
 
     public int getBalance() {
-        return -1;
+        return this.base.getBalance();
     }
 
     @Override
