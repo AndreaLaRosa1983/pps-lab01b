@@ -11,7 +11,7 @@ public class GoldBankAccount implements BankAccount {
 
     @Override
     public void deposit(int amount) {
-
+        this.base.deposit(amount);
     }
 
     @Override
