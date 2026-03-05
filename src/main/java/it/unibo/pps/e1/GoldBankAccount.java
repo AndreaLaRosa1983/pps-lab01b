@@ -3,7 +3,7 @@ package it.unibo.pps.e1;
 public class GoldBankAccount implements BankAccount {
 
     private CoreBankAccount base = new CoreBankAccount();
-
+    private int OVERDRAFT_LIMIT = 500;
 
     public int getBalance() {
         return this.base.getBalance();
@@ -14,9 +14,9 @@ public class GoldBankAccount implements BankAccount {
         this.base.deposit(amount);
     }
 
-    @Override
-    public void withdraw(int amount) {
-        if (this.getBalance() < amount){
+    public void withdraw(final int amount) {
+        final int newBalance = this.getBalance() - amount;
+        if (newBalance < -OVERDRAFT_LIMIT) {
             throw new IllegalStateException();
         }
         base.withdraw(amount);
