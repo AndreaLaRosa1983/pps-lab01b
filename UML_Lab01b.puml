@@ -1,0 +1,86 @@
+@startuml
+class it.unibo.pps.e1.CoreBankAccount {
+- int balance
++ int getBalance()
++ void deposit(int)
++ void withdraw(int)
+}
+
+
+class it.unibo.pps.e1.OverdraftWithdrawPolicy {
+- int limit
++ boolean canWithdraw(int,int,int)
+}
+
+
+class it.unibo.pps.e1.SilverBankAccount {
+- CoreBankAccount base
+- FeePolicy feePolicy
+- WithdrawPolicy withdrawPolicy
++ int getBalance()
++ void deposit(int)
++ void withdraw(int)
+}
+
+
+class it.unibo.pps.e1.FixedFeePolicy {
+- int fee
++ int fee(int)
+}
+
+
+interface it.unibo.pps.e1.BankAccount {
+~ int getBalance()
+~ void deposit(int)
+~ void withdraw(int)
+}
+
+interface it.unibo.pps.e1.FeePolicy {
+~ int fee(int)
+}
+
+interface it.unibo.pps.e1.WithdrawPolicy {
+~ boolean canWithdraw(int,int,int)
+}
+
+class it.unibo.pps.e1.BronzeFeePolicy {
+- {static} int THRESHOLD
+- {static} int HIGH_FEE
++ int fee(int)
+}
+
+
+class it.unibo.pps.e1.GoldBankAccount {
+- CoreBankAccount base
+- FeePolicy feePolicy
+- WithdrawPolicy withdrawPolicy
++ int getBalance()
++ void deposit(int)
++ void withdraw(int)
+}
+
+
+class it.unibo.pps.e1.NoOverdraftWithdrawPolicy {
++ boolean canWithdraw(int,int,int)
+}
+
+class it.unibo.pps.e1.BronzeBankAccount {
+- CoreBankAccount base
+- FeePolicy feePolicy
+- WithdrawPolicy withdrawPolicy
++ int getBalance()
++ void deposit(int)
++ void withdraw(int)
+}
+
+
+
+
+it.unibo.pps.e1.WithdrawPolicy <|.. it.unibo.pps.e1.OverdraftWithdrawPolicy
+it.unibo.pps.e1.BankAccount <|.. it.unibo.pps.e1.SilverBankAccount
+it.unibo.pps.e1.FeePolicy <|.. it.unibo.pps.e1.FixedFeePolicy
+it.unibo.pps.e1.FeePolicy <|.. it.unibo.pps.e1.BronzeFeePolicy
+it.unibo.pps.e1.BankAccount <|.. it.unibo.pps.e1.GoldBankAccount
+it.unibo.pps.e1.WithdrawPolicy <|.. it.unibo.pps.e1.NoOverdraftWithdrawPolicy
+it.unibo.pps.e1.BankAccount <|.. it.unibo.pps.e1.BronzeBankAccount
+@enduml
