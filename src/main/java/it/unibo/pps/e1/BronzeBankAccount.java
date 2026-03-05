@@ -10,11 +10,11 @@ public class BronzeBankAccount implements BankAccount{
 
     @Override
     public void deposit(int amount) {
-
+        this.base.deposit(amount);
     }
 
     @Override
     public void withdraw(int amount) {
-
+        this.base.withdraw(amount);
     }
 }
