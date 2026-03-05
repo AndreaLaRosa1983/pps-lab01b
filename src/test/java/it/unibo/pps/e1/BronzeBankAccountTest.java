@@ -7,9 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BronzeBankAccountTest {
 
-    private BankAccount account;
+    private BronzeBankAccount account;
 
     @BeforeEach
-    void init() {
-        this.account = new BronzeBankAccount(new CoreBankAccount());
+    void init(){
+        this.account = new BronzeBankAccount();
     }
+
+    @Test
+    void testInitiallyEmpty() {
+        assertEquals(0, this.account.getBalance());
+    }
+}
