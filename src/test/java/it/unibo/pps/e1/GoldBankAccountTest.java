@@ -15,5 +15,8 @@ public class GoldBankAccountTest {
         this.account = new GoldBankAccount();
     }
 
-
+    @Test
+    void testInitiallyEmpty() {
+        assertEquals(0, this.account.getBalance());
+    }
 }

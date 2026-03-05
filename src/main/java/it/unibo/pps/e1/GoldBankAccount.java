@@ -4,9 +4,9 @@ public class GoldBankAccount implements BankAccount {
 
     private CoreBankAccount base = new CoreBankAccount();
 
-    public int getBalance() {
 
-        return 0;
+    public int getBalance() {
+        return -1;
     }
 
     @Override
