@@ -21,15 +21,15 @@ public class BronzeBankAccountTest {
 
     @Test
     public void testWithdrawBelow100HasNoFee() {
-        this.account.deposit(99);
-        this.account.withdraw(49);
-        assertEquals(50, this.account.getBalance());
+        this.account.deposit(1000);
+        this.account.withdraw(50);
+        assertEquals(950, this.account.getBalance());
     }
 
     @Test
     public void testWithdrawAbove100HasFee() {
-        this.account.deposit(100);
-        this.account.withdraw(50);
-        assertEquals(49, this.account.getBalance());
+        this.account.deposit(1000);
+        this.account.withdraw(100);
+        assertEquals(899, this.account.getBalance());
     }
 }
