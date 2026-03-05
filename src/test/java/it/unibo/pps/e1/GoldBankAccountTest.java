@@ -36,6 +36,7 @@ public class GoldBankAccountTest {
     @Test
     public void testNegativeWithdraw(){
         this.account.deposit(1000);
+        this.account.withdraw(1500);
         assertEquals(-500, this.account.getBalance());
     }
 

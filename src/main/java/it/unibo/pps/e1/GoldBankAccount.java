@@ -2,8 +2,8 @@ package it.unibo.pps.e1;
 
 public class GoldBankAccount implements BankAccount {
 
-    private CoreBankAccount base = new CoreBankAccount();
-    private int OVERDRAFT_LIMIT = 500;
+    private final CoreBankAccount base = new CoreBankAccount();
+    private final int OVERDRAFT_LIMIT = 500;
 
     public int getBalance() {
         return this.base.getBalance();
