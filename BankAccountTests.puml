@@ -1,0 +1,43 @@
+@startuml
+class it.unibo.pps.e1.SilverBankAccountTest {
+- SilverBankAccount account
+- int initialAmount
+- int bigWithdraw
+- int littleWithdraw
+- int fee
+~ void init()
++ void testInitiallyEmpty()
++ void testCanDeposit()
++ void testCanWithdraw()
++ void testCannotWithdrawMoreThanAvailable()
+~ void cannotWithdrawExactlyBalanceBecauseOfFee()
+}
+
+
+class it.unibo.pps.e1.BronzeBankAccountTest {
+- BronzeBankAccount account
+- int initialAmount
+- int bigWithdraw
+- int littleWithdraw
+- int bronzeFee
+~ void init()
+~ void testInitiallyEmpty()
++ void testWithdrawBelow100HasNoFee()
++ void testWithdrawAbove100HasFee()
+}
+
+
+class it.unibo.pps.e1.GoldBankAccountTest {
+- GoldBankAccount account
+- int initialAmount
+- int bigWithdraw
+- int littleWithdraw
+~ void init()
+~ void testInitiallyEmpty()
++ void testCanDeposit()
++ void testWithdrawHasNoFee()
++ void testNegativeWithdraw()
+}
+
+
+@enduml
